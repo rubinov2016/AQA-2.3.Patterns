@@ -54,6 +54,8 @@ class DeliveryTest {
         $$("button").find(exactText("Запланировать")).click();
 
         $(withText("Необходимо подтверждение")).shouldBe(visible, Duration.ofSeconds(15));
+        $$("button").find(exactText("Перепланировать")).click();
+        $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
 
     }
 }

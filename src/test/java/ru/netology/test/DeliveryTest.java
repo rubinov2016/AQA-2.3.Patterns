@@ -47,6 +47,7 @@ class DeliveryTest {
         $$("button").find(exactText("Запланировать")).click();
         $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
 
+
 //        $("[data-test-id=date] input").clear();
         $("[data-test-id=date] input").sendKeys( Keys.CONTROL +"A",Keys.DELETE);
         $("[data-test-id=date] input").setValue(secondMeetingDate);

@@ -1,6 +1,11 @@
 HELP.md
 .gradle
 build/
+### Exclusions ###
+!gradle/wrapper/gradle-wrapper.jar
+!artifacts/*.jar
+!**/src/main/**
+!**/src/test/**
 
 ### STS ###
 .apt_generated
@@ -37,7 +42,3 @@ out/
 *.tar.gz
 *.rar
 
-### Exclusions ###
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**
-!**/src/test/**

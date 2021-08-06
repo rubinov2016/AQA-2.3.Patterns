@@ -58,7 +58,7 @@ public class DataGenerator {
                 "Ставрополь",
                 "Ярославль"
         };
-        int rnd = new Random().nextInt(cityList.length)
+        int rnd = new Random().nextInt(cityList.length);
         return cityList[rnd];
     }
 

@@ -28,16 +28,8 @@ class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
-        //TODO Доставка в выбранный город недоступна
-        $("[data-test-id=city] input").setValue(validUser.getCity());
- //       $("[data-test-id=city] [placeholder='Доставка в выбранный город недоступна']").shouldBe(visible);
 
-//        $("[data-test-id=date] input").clear();
+        $("[data-test-id=city] input").setValue(validUser.getCity());
         $("[data-test-id=date] input").sendKeys( Keys.CONTROL +"A",Keys.DELETE);
         $("[data-test-id=date] input").setValue(firstMeetingDate);
         $("[data-test-id=date] input").click();
@@ -46,9 +38,8 @@ class DeliveryTest {
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
         $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
+        $("[data-test-id=success-notification]").find(firstMeetingDate);
 
-
-//        $("[data-test-id=date] input").clear();
         $("[data-test-id=date] input").sendKeys( Keys.CONTROL +"A",Keys.DELETE);
         $("[data-test-id=date] input").setValue(secondMeetingDate);
         $$("button").find(exactText("Запланировать")).click();
@@ -56,6 +47,6 @@ class DeliveryTest {
         $(withText("Необходимо подтверждение")).shouldBe(visible, Duration.ofSeconds(15));
         $$("button").find(exactText("Перепланировать")).click();
         $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
-
+        $("[data-test-id=success-notification]").find(secondMeetingDate);
     }
 }

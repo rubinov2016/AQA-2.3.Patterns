@@ -37,8 +37,9 @@ class DeliveryTest {
         $("[data-test-id=phone] input").setValue(validUser.getPhone());
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
-        $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
-        $("[data-test-id=success-notification]").find(firstMeetingDate);
+        $("[data-test-id=success-notification] .notification__content").shouldHave(exactText("Встреча успешно запланирована на " + firstMeetingDate));
+//        $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
+//        $("[data-test-id=success-notification]").find(firstMeetingDate);
 
         $("[data-test-id=date] input").sendKeys( Keys.CONTROL +"A",Keys.DELETE);
         $("[data-test-id=date] input").setValue(secondMeetingDate);
@@ -46,7 +47,8 @@ class DeliveryTest {
 
         $(withText("Необходимо подтверждение")).shouldBe(visible, Duration.ofSeconds(15));
         $$("button").find(exactText("Перепланировать")).click();
-        $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
-        $("[data-test-id=success-notification]").find(secondMeetingDate);
+        $("[data-test-id=success-notification] .notification__content").shouldHave(exactText("Встреча успешно запланирована на " + secondMeetingDate));
+//        $(withText("Встреча успешно запланирована на")).shouldBe(visible, Duration.ofSeconds(15));
+//        $("[data-test-id=success-notification]").find(secondMeetingDate);
     }
 }
